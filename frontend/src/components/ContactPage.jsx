@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NewHeader } from './NewHeader';
 import { NewFooter } from './NewFooter';
 import { GoToTop } from './GoToTop';
+import { Toaster } from './ui/sonner';
 import axios from 'axios';
 import { toast } from 'sonner';
 
