@@ -18,31 +18,31 @@ code {
 
 @layer base {
   :root {
-        /* ScaleIQ Theme: White, Black, Gold */
-        --background: 0 0% 100%; /* White */
-        --foreground: 0 0% 4%; /* Black */
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 4%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 4%;
-        --primary: 0 0% 4%; /* Black */
-        --primary-foreground: 0 0% 100%; /* White */
-        --secondary: 0 0% 96%;
-        --secondary-foreground: 0 0% 4%;
-        --muted: 0 0% 96%;
-        --muted-foreground: 0 0% 45%;
-        --accent: 43 48% 55%; /* Gold */
+        /* ScaleIQ STRICT Theme: Black, White, Gold ONLY */
+        --background: 0 0% 4%; /* Black */
+        --foreground: 0 0% 100%; /* White */
+        --card: 0 0% 8%;
+        --card-foreground: 0 0% 100%;
+        --popover: 0 0% 4%;
+        --popover-foreground: 0 0% 100%;
+        --primary: 45 65% 62%; /* Gold #DCBF62 */
+        --primary-foreground: 0 0% 4%; /* Black */
+        --secondary: 0 0% 15%;
+        --secondary-foreground: 0 0% 100%;
+        --muted: 0 0% 15%;
+        --muted-foreground: 0 0% 70%;
+        --accent: 45 65% 62%; /* Gold */
         --accent-foreground: 0 0% 4%;
         --destructive: 0 84% 60%;
         --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 90%;
-        --input: 0 0% 90%;
-        --ring: 43 48% 55%; /* Gold */
-        --chart-1: 43 48% 55%;
+        --border: 45 65% 62%; /* Gold border, NOT blue */
+        --input: 0 0% 20%;
+        --ring: 45 65% 62%; /* Gold focus ring, NOT blue */
+        --chart-1: 45 65% 62%;
         --chart-2: 0 0% 4%;
-        --chart-3: 0 0% 70%;
+        --chart-3: 0 0% 40%;
         --chart-4: 43 48% 45%;
-        --chart-5: 0 0% 50%;
+        --chart-5: 0 0% 60%;
         --radius: 0.5rem;
     }
 }
@@ -52,8 +52,17 @@ code {
     @apply border-border;
     }
   body {
-    @apply bg-scaleiq-white text-scaleiq-black;
+    @apply bg-scaleiq-black text-scaleiq-white;
     }
+  
+  /* REMOVE ALL BLUE - Force gold for interactive elements */
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  a:focus-visible {
+    outline: 2px solid #DCBF62 !important;
+    outline-offset: 2px;
+  }
 }
 
 /* Mobius 3D Animation */
@@ -64,20 +73,9 @@ code {
 }
 
 .mobius-loop {
-  animation: rotate3d 20s linear infinite;
   transform-style: preserve-3d;
 }
 
 .mobius-shadow {
-  animation: rotate3d 20s linear infinite reverse;
   transform-style: preserve-3d;
-}
-
-@keyframes rotate3d {
-  0% {
-    transform: rotateY(0deg) rotateX(0deg);
-  }
-  100% {
-    transform: rotateY(360deg) rotateX(15deg);
-  }
 }
