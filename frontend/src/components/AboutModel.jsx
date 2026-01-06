@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NewHeader } from './NewHeader';
 import { NewFooter } from './NewFooter';
 import { GoToTop } from './GoToTop';
 
 export const AboutModel = () => {
   const [activeNode, setActiveNode] = useState(null);
-  const [isHovering, setIsHovering] = useState(false);
 
   const modelNodes = [
     { id: 'expertise', label: 'Expertise Driven', angle: 90 },
@@ -28,41 +27,68 @@ export const AboutModel = () => {
       <NewHeader />
       
       <style>{`
-        @keyframes rotate-slow {
-          from { transform: translate(-50%, -50%) rotate(0deg); }
-          to { transform: translate(-50%, -50%) rotate(360deg); }
+        /* FLOATING object - NO rotation */
+        @keyframes float-gentle {
+          0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+          50% { transform: translate(-50%, -50%) translateY(-15px); }
         }
         
-        .circular-model {
-          animation: rotate-slow 60s linear infinite;
+        /* Shimmer effect moving across surface */
+        @keyframes shimmer-sweep {
+          0% { background-position: -200% center; }
+          100% { background-position: 200% center; }
         }
         
-        .circular-model.paused {
-          animation-play-state: paused;
+        /* Gold rim lighting pulse */
+        @keyframes rim-glow {
+          0%, 100% { filter: drop-shadow(0 0 15px #DCBF62); }
+          50% { filter: drop-shadow(0 0 30px #DCBF62); }
         }
         
-        .model-node {
+        .floating-model {
+          animation: float-gentle 6s ease-in-out infinite;
+        }
+        
+        .shimmer-surface {
+          background: linear-gradient(
+            135deg,
+            transparent 0%,
+            transparent 40%,
+            rgba(220, 191, 98, 0.3) 50%,
+            transparent 60%,
+            transparent 100%
+          );
+          background-size: 200% 200%;
+          animation: shimmer-sweep 4s linear infinite;
+        }
+        
+        .rim-lighting {
+          animation: rim-glow 4s ease-in-out infinite;
+        }
+        
+        .node-interactive {
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           cursor: pointer;
         }
         
-        .model-node:hover {
-          transform: scale(1.15);
+        .node-interactive:hover {
+          transform: scale(1.15) translateY(-5px);
+          filter: drop-shadow(0 10px 25px rgba(220, 191, 98, 0.6));
         }
         
-        .model-node.active {
+        .node-interactive.active {
           transform: scale(1.2);
         }
         
         .section-content {
           transition: all 0.5s ease-out;
-          opacity: 0.7;
+          opacity: 0.6;
         }
         
         .section-content.active {
           opacity: 1;
-          background: linear-gradient(135deg, rgba(200, 169, 81, 0.1) 0%, transparent 100%);
-          border-left-color: #C8A951;
+          background: linear-gradient(135deg, rgba(220, 191, 98, 0.08) 0%, transparent 100%);
+          border-left-color: #DCBF62;
           border-left-width: 4px;
         }
       `}</style>
@@ -79,18 +105,20 @@ export const AboutModel = () => {
             The <span className="text-scaleiq-gold">ScaleIQ Model</span>
           </h1>
           
+          <div className="h-1 w-32 bg-gradient-to-r from-scaleiq-gold to-scaleiq-gold-dark mb-8"></div>
+          
           <p className="text-xl text-gray-300 leading-relaxed">
             Technology investments often exist, talent is in place, and data is available - yet operational impact remains uneven because change is introduced in pieces rather than as a coherent system. The ScaleIQ Model addresses this by providing a unifying structure that connects digital initiatives to how transformation happens on the ground.
           </p>
         </section>
 
-        {/* Interactive Circular Model */}
+        {/* Interactive FLOATING Model - NO Rotation */}
         <section className="max-w-7xl mx-auto px-6 lg:px-8 mb-32">
           <div className="relative w-full" style={{ minHeight: '700px' }}>
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              {/* Central Circle */}
+            <div className="absolute left-1/2 top-1/2">
+              {/* Central FLOATING Circle - 3D feel WITHOUT rotation */}
               <div 
-                className={`circular-model ${isHovering ? 'paused' : ''}`}
+                className="floating-model rim-lighting"
                 style={{
                   width: '400px',
                   height: '400px',
@@ -99,49 +127,50 @@ export const AboutModel = () => {
                   top: '50%',
                   transform: 'translate(-50%, -50%)'
                 }}
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
               >
-                {/* Outer Ring */}
-                <svg width="400" height="400" className="absolute inset-0">
-                  <circle
-                    cx="200"
-                    cy="200"
-                    r="180"
-                    fill="none"
-                    stroke="url(#goldGradient)"
-                    strokeWidth="2"
-                    opacity="0.6"
-                  />
-                  <circle
-                    cx="200"
-                    cy="200"
-                    r="160"
-                    fill="none"
-                    stroke="url(#goldGradient)"
-                    strokeWidth="1"
-                    opacity="0.3"
-                  />
+                {/* Depth shadow */}
+                <div className="absolute inset-0 bg-scaleiq-gold/5 rounded-full blur-3xl transform translate-y-4"></div>
+                
+                {/* Main golden object with shimmer */}
+                <div className="absolute inset-0 shimmer-surface rounded-full border-4 border-scaleiq-gold/60" style={{
+                  background: 'radial-gradient(circle at 30% 30%, rgba(220, 191, 98, 0.3), rgba(11, 11, 11, 0.9))'
+                }}>
+                  {/* Inner glow */}
+                  <div className="absolute inset-8 bg-gradient-to-br from-scaleiq-gold/20 to-transparent rounded-full"></div>
                   
-                  <defs>
-                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#C8A951" stopOpacity="1" />
-                      <stop offset="50%" stopColor="#FFD700" stopOpacity="0.8" />
-                      <stop offset="100%" stopColor="#C8A951" stopOpacity="1" />
-                    </linearGradient>
-                  </defs>
-                </svg>
+                  {/* Concentric rings for depth */}
+                  <svg width="400" height="400" className="absolute inset-0">
+                    <circle
+                      cx="200"
+                      cy="200"
+                      r="180"
+                      fill="none"
+                      stroke="#DCBF62"
+                      strokeWidth="1"
+                      opacity="0.4"
+                    />
+                    <circle
+                      cx="200"
+                      cy="200"
+                      r="160"
+                      fill="none"
+                      stroke="#DCBF62"
+                      strokeWidth="1"
+                      opacity="0.2"
+                    />
+                  </svg>
 
-                {/* Center Text */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-scaleiq-gold text-4xl font-bold mb-2">ScaleIQ</div>
-                    <div className="text-gray-400 text-sm">Model</div>
+                  {/* Center Text */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-scaleiq-gold text-4xl font-bold mb-2 drop-shadow-lg">ScaleIQ</div>
+                      <div className="text-gray-400 text-sm">Model</div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Node Labels */}
+              {/* Node Labels - GOLD on hover */}
               {modelNodes.map((node) => {
                 const radius = 280;
                 const x = Math.cos((node.angle - 90) * Math.PI / 180) * radius;
@@ -150,7 +179,7 @@ export const AboutModel = () => {
                 return (
                   <div
                     key={node.id}
-                    className={`model-node ${activeNode === node.id ? 'active' : ''}`}
+                    className={`node-interactive ${activeNode === node.id ? 'active' : ''}`}
                     onClick={() => handleNodeClick(node.id)}
                     style={{
                       position: 'absolute',
@@ -160,11 +189,11 @@ export const AboutModel = () => {
                     }}
                   >
                     <div className="relative flex flex-col items-center">
-                      {/* Node Circle */}
+                      {/* Node Circle - GOLD active, NO blue */}
                       <div 
                         className={`w-20 h-20 rounded-full flex items-center justify-center mb-3 transition-all ${
                           activeNode === node.id 
-                            ? 'bg-scaleiq-gold shadow-lg shadow-scaleiq-gold/50' 
+                            ? 'bg-scaleiq-gold shadow-lg shadow-scaleiq-gold/60' 
                             : 'bg-gray-900 border-2 border-scaleiq-gold/50'
                         }`}
                       >
@@ -195,7 +224,7 @@ export const AboutModel = () => {
           </div>
         </section>
 
-        {/* Content Sections */}
+        {/* Content Sections - GOLD borders, NO blue */}
         <section className="max-w-5xl mx-auto px-6 lg:px-8 space-y-12">
           {/* Expertise Driven */}
           <div 
