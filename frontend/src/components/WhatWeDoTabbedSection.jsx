@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 
 export const WhatWeDoTabbedSection = () => {
   const navigate = useNavigate();
@@ -33,22 +32,22 @@ export const WhatWeDoTabbedSection = () => {
   const activeContent = tabs.find(tab => tab.id === activeTab);
 
   return (
-    <section className="py-24 bg-scaleiq-white" data-testid="what-we-do-section">
+    <section className="py-24 bg-scaleiq-white border-t-4 border-scaleiq-gold" data-testid="what-we-do-section">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2 className="text-5xl lg:text-6xl font-bold text-scaleiq-black text-center mb-16">
-          What We Do
+          <span className="text-scaleiq-gold">What</span> We Do
         </h2>
         
         {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12 border-b border-gray-200">
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-8 py-4 font-medium text-lg transition-all relative ${
+              className={`px-8 py-4 font-medium text-lg transition-all relative border-b-4 ${
                 activeTab === tab.id
-                  ? 'text-scaleiq-black border-b-4 border-scaleiq-gold'
-                  : 'text-gray-500 hover:text-scaleiq-black border-b-4 border-transparent'
+                  ? 'text-scaleiq-black border-scaleiq-gold bg-scaleiq-gold/5'
+                  : 'text-gray-500 hover:text-scaleiq-black border-transparent hover:border-scaleiq-gold/30'
               }`}
               data-testid={`tab-${tab.id}`}
             >
@@ -62,7 +61,7 @@ export const WhatWeDoTabbedSection = () => {
 
         {/* Tab Content */}
         <div className="max-w-4xl mx-auto">
-          <div className="p-12 bg-gray-50 rounded-2xl border-2 border-gray-200 hover:border-scaleiq-gold transition-all">
+          <div className="p-12 bg-gray-50 rounded-2xl border-4 border-scaleiq-gold/20 hover:border-scaleiq-gold transition-all">
             <div className="mb-6">
               <span className="inline-block px-4 py-2 bg-scaleiq-gold/10 text-scaleiq-gold text-sm font-medium rounded-full mb-4">
                 {activeContent.label} {activeContent.subtitle}
@@ -75,11 +74,13 @@ export const WhatWeDoTabbedSection = () => {
             
             <button
               onClick={() => navigate(activeContent.path)}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-scaleiq-black text-scaleiq-white hover:bg-scaleiq-gold hover:text-scaleiq-black font-medium rounded-lg transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-scaleiq-gold text-scaleiq-black hover:bg-scaleiq-black hover:text-scaleiq-white border-2 border-scaleiq-gold font-medium rounded-lg transition-all"
               data-testid="learn-more-button"
             >
               Learn More
-              <ArrowRight className="w-5 h-5" />
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </button>
           </div>
         </div>
