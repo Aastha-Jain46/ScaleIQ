@@ -65,10 +65,10 @@ const Home = () => {
     <div className="min-h-screen bg-scaleiq-white">
       <NewHeader />
       <NewHeroSection />
+      <EnergyTechSection />
       <WhatWeDoTabbedSection />
-      <NumericImpactSection />
-      <CorePrinciplesSection />
-      <LeadershipQuoteSection />
+      <DecisionPhilosophySection />
+      <MergedCredibilitySection />
       <CaseStudyHighlight />
       <CTASection />
       <NewFooter />
