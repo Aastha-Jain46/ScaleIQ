@@ -89,33 +89,6 @@ export const MobiusStrip3D = () => {
           </g>
         </svg>
       </div>
-      
-      <style jsx>{`
-        .mobius-container {
-          width: 100%;
-          height: 100%;
-          perspective: 1000px;
-        }
-        
-        .mobius-loop {
-          animation: rotate3d 20s linear infinite;
-          transform-style: preserve-3d;
-        }
-        
-        .mobius-shadow {
-          animation: rotate3d 20s linear infinite reverse;
-          transform-style: preserve-3d;
-        }
-        
-        @keyframes rotate3d {
-          0% {
-            transform: rotateY(0deg) rotateX(0deg);
-          }
-          100% {
-            transform: rotateY(360deg) rotateX(15deg);
-          }
-        }
-      `}</style>
     </div>
   );
 };
