@@ -40,6 +40,7 @@ import { CaseStudiesPage } from './components/CaseStudiesPage';
 // Other Pages
 import { ContactPage } from './components/ContactPage';
 import { JoinUsPage } from './components/JoinUsPage';
+import { HowWeWorkPage } from './components/HowWeWorkPage';
 
 // Admin (keep existing)
 import { AdminDashboard } from './components/AdminDashboard';
