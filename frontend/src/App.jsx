@@ -109,34 +109,37 @@ function App() {
           <Route path="/about/investors" element={<AboutInvestors />} />
           <Route path="/about/partners" element={<AboutPartners />} />
           
-          {/* Whom We Serve */}
+          {/* How We Work */}
+          <Route path="/how-we-work" element={<HowWeWorkPage />} />
+          
+          {/* Who We Serve */}
           <Route path="/serve/oil-gas" element={<ServeOilGas />} />
-          <Route path="/serve/energy" element={<PlaceholderPage title="Energy Companies" subtitle="Whom We Serve > Energy Companies" />} />
-          <Route path="/serve/renewables" element={<PlaceholderPage title="Renewables & Utilities" subtitle="Whom We Serve > Renewables & Utilities" />} />
-          <Route path="/serve/isvs" element={<PlaceholderPage title="Energy ISVs" subtitle="Whom We Serve > Energy ISVs" />} />
-          <Route path="/serve/oil-service" element={<PlaceholderPage title="Oil Service Companies" subtitle="Whom We Serve > Oil Service Companies" />} />
+          <Route path="/serve/energy" element={<PlaceholderPage title="Energy Companies" subtitle="Who We Serve > Energy Companies" />} />
+          <Route path="/serve/renewables" element={<PlaceholderPage title="Renewables & Utilities" subtitle="Who We Serve > Renewables & Utilities" />} />
+          <Route path="/serve/isvs" element={<PlaceholderPage title="Energy ISVs" subtitle="Who We Serve > Energy ISVs" />} />
+          <Route path="/serve/oil-service" element={<PlaceholderPage title="Oilfield Service Companies" subtitle="Who We Serve > Oilfield Service Companies" />} />
           
-          {/* Digital Engineering */}
+          {/* What We Do - Digital Engineering */}
           <Route path="/digital/app-dev" element={<DigitalAppDev />} />
-          <Route path="/digital/ai" element={<PlaceholderPage title="AI Enablement" subtitle="Digital Engineering > AI Enablement" />} />
-          <Route path="/digital/product" element={<PlaceholderPage title="Product Engineering" subtitle="Digital Engineering > Product Engineering" />} />
-          <Route path="/digital/professional" element={<PlaceholderPage title="Professional Services" subtitle="Digital Engineering > Professional Services" />} />
-          <Route path="/digital/consulting" element={<PlaceholderPage title="Technical Consulting" subtitle="Digital Engineering > Technical Consulting" />} />
-          <Route path="/digital/staff" element={<PlaceholderPage title="Staff Augmentation" subtitle="Digital Engineering > Staff Augmentation" />} />
+          <Route path="/digital/ai" element={<PlaceholderPage title="AI Enablement" subtitle="What We Do > Digital Engineering > AI Enablement" />} />
+          <Route path="/digital/product" element={<PlaceholderPage title="Product Engineering" subtitle="What We Do > Digital Engineering > Product Engineering" />} />
+          <Route path="/digital/professional" element={<PlaceholderPage title="Professional Services" subtitle="What We Do > Digital Engineering > Professional Services" />} />
+          <Route path="/digital/consulting" element={<PlaceholderPage title="Technical Consulting" subtitle="What We Do > Digital Engineering > Technical Consulting" />} />
+          <Route path="/digital/staff" element={<PlaceholderPage title="Staff Augmentation" subtitle="What We Do > Digital Engineering > Staff Augmentation" />} />
           
-          {/* Products */}
+          {/* What We Do - Products */}
           <Route path="/products/ogesone" element={<ProductsPage />} />
           <Route path="/products/product2" element={<ProductsPage />} />
           <Route path="/products/product3" element={<ProductsPage />} />
           
-          {/* GCC Solutions */}
+          {/* What We Do - GCC Solutions */}
           <Route path="/gcc-solutions" element={<GCCSolutions />} />
           
-          {/* News & Insights */}
+          {/* News */}
           <Route path="/news" element={<NewsPage />} />
-          <Route path="/insights" element={<PlaceholderPage title="ScaleIQ Insight" subtitle="News & Insights > ScaleIQ Insight" />} />
+          <Route path="/insights" element={<PlaceholderPage title="ScaleIQ Insight" subtitle="News > ScaleIQ Insight" />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
-          <Route path="/events" element={<PlaceholderPage title="Events" subtitle="News & Insights > Events" />} />
+          <Route path="/events" element={<PlaceholderPage title="Events" subtitle="News > Events" />} />
           
           {/* Other Pages */}
           <Route path="/join" element={<JoinUsPage />} />
