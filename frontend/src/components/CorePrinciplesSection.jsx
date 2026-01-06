@@ -17,16 +17,20 @@ export const CorePrinciplesSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-scaleiq-white" data-testid="core-principles-section">
+    <section className="py-24 bg-gray-50" data-testid="core-principles-section">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {principles.map((principle, index) => (
             <div 
               key={index} 
-              className="p-8 border border-gray-200 rounded-lg hover:border-scaleiq-gold transition-all group"
-              data-testid={`principle-${index}`}
+              className="relative p-10 bg-scaleiq-white border-l-4 border-scaleiq-gold rounded-lg shadow-sm hover:shadow-xl transition-all group"
+              data-testid={`principle-card-${index}`}
             >
-              <h3 className="text-2xl font-bold text-scaleiq-black mb-4 group-hover:text-scaleiq-gold transition-colors">
+              <div className="absolute top-6 right-6 w-12 h-12 bg-scaleiq-gold/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-2xl font-bold text-scaleiq-gold">{index + 1}</span>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-scaleiq-black mb-4 pr-14">
                 {principle.title}
               </h3>
               <p className="text-gray-600 leading-relaxed">
