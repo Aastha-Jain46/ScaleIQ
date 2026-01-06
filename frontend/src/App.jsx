@@ -10,7 +10,6 @@ import { EnergyTechSection } from './components/EnergyTechSection';
 import { WhatWeDoTabbedSection } from './components/WhatWeDoTabbedSection';
 import { DecisionPhilosophySection } from './components/DecisionPhilosophySection';
 import { MergedCredibilitySection } from './components/MergedCredibilitySection';
-import { CaseStudyHighlight } from './components/CaseStudyHighlight';
 import { CTASection } from './components/CTASection';
 import { NewFooter } from './components/NewFooter';
 import { GoToTop } from './components/GoToTop';
